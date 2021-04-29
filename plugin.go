@@ -59,7 +59,7 @@ func (p Plugin) Exec() error {
 	}
 
 	if len(p.Config.JavaBinaries) > 0 {
-		args = append(args, "-Dsonar.java.binaries==" + p.Config.JavaBinaries)
+		args = append(args, "-Dsonar.java.binaries=" + p.Config.JavaBinaries)
 	}
 
 	cmd := exec.Command("sonar-scanner", args...)
