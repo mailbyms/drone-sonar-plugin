@@ -61,6 +61,11 @@ func main() {
 			EnvVar: "PLUGIN_SOURCES",
 		},
 		cli.StringFlag{
+			Name:   "javaBinaries",
+			Usage:  "analysis java binaries",
+			EnvVar: "PLUGIN_JAVA_BINARIES",
+		},
+		cli.StringFlag{
 			Name:   "inclusions",
 			Usage:  "code inclusions",
 			EnvVar: "PLUGIN_INCLUSIONS",
@@ -115,6 +120,7 @@ func run(c *cli.Context) {
 			ShowProfiling:  c.String("showProfiling"),
 			BranchAnalysis: c.Bool("branchAnalysis"),
 			UsingProperties: c.Bool("usingProperties"),
+			JavaBinaries:	c.String("javaBinaries"),
 
 		},
 	}

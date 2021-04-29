@@ -24,6 +24,7 @@ type (
 		ShowProfiling  string
 		BranchAnalysis bool
 		UsingProperties bool
+		JavaBinaries string
 	}
 	Plugin struct {
 		Config Config
@@ -55,6 +56,10 @@ func (p Plugin) Exec() error {
 
 	if p.Config.BranchAnalysis {
 		args = append(args, "-Dsonar.branch.name=" + p.Config.Branch)
+	}
+
+	if p.Config.JavaBinaries {
+		args = append(args, "-Dsonar.java.binaries==" + p.Config.JavaBinaries)
 	}
 
 	cmd := exec.Command("sonar-scanner", args...)
