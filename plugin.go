@@ -58,7 +58,7 @@ func (p Plugin) Exec() error {
 		args = append(args, "-Dsonar.branch.name=" + p.Config.Branch)
 	}
 
-	if p.Config.JavaBinaries {
+	if len(p.Config.JavaBinaries) > 0 {
 		args = append(args, "-Dsonar.java.binaries==" + p.Config.JavaBinaries)
 	}
 
