@@ -2,10 +2,12 @@
 The plugin of Drone CI to integrate with SonarQube (previously called Sonar), which is an open source code quality management platform.
 
 ### Notice
-This branch adds a new environment parameter `JAVA_BINARIES` to fix the following problem:  
-```
-Please provide compiled classes of your project with sonar.java.binaries property
-```
+- This branch adds a new environment parameter `java_binaries` to fix the following problem:  
+  ```
+  Please provide compiled classes of your project with sonar.java.binaries property
+  ```
+- Another optional parameter `custom_ding_token` is for personal use, adding `-Dsonar.analysis.dingtalktoken=${custom_ding_token} ` to sonar-scanner command, then  sonarqube's webhook would pass it to an Dingtalk IM sender.
+
 
 Find the details at "Pipeline example"
 
@@ -39,5 +41,8 @@ steps
         from_secret: sonar_host
       sonar_token:
         from_secret: sonar_token
-      JAVA_BINARIES: target/classes
+      java_binaries: target/classes
+      # optional, for sonarqube webhook
+      custom_ding_token:
+        from_secret: dingtalk_token
 ```

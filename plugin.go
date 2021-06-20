@@ -25,6 +25,7 @@ type (
 		BranchAnalysis bool
 		UsingProperties bool
 		JavaBinaries string
+		CustomDingToken string
 	}
 	Plugin struct {
 		Config Config
@@ -60,6 +61,10 @@ func (p Plugin) Exec() error {
 
 	if len(p.Config.JavaBinaries) > 0 {
 		args = append(args, "-Dsonar.java.binaries=" + p.Config.JavaBinaries)
+	}
+
+	if len(p.Config.CustomDingToken) > 0 {
+		args = append(args, "-Dsonar.analysis.dingtalktoken=" + p.Config.CustomDingToken)
 	}
 
 	cmd := exec.Command("sonar-scanner", args...)

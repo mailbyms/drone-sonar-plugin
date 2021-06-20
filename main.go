@@ -66,6 +66,11 @@ func main() {
 			EnvVar: "PLUGIN_JAVA_BINARIES",
 		},
 		cli.StringFlag{
+			Name:   "customDingToken",
+			Usage:  "analysis custom dingtalk token",
+			EnvVar: "PLUGIN_CUSTOM_DING_TOKEN",
+		},
+		cli.StringFlag{
 			Name:   "inclusions",
 			Usage:  "code inclusions",
 			EnvVar: "PLUGIN_INCLUSIONS",
@@ -121,6 +126,7 @@ func run(c *cli.Context) {
 			BranchAnalysis: c.Bool("branchAnalysis"),
 			UsingProperties: c.Bool("usingProperties"),
 			JavaBinaries:	c.String("javaBinaries"),
+			CustomDingToken:	c.String("customDingToken"),
 
 		},
 	}
